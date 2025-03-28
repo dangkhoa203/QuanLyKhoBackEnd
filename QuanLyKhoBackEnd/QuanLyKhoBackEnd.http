@@ -1,6 +1,0 @@
-@QuanLyKhoBackEnd_HostAddress = http://localhost:5158
-
-GET {{QuanLyKhoBackEnd_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
