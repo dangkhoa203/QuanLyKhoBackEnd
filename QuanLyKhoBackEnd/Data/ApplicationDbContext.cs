@@ -5,7 +5,6 @@ using QuanLyKhoBackEnd.Model.Entity.Account;
 using QuanLyKhoBackEnd.Model.Entity.Customer_Entity;
 using QuanLyKhoBackEnd.Model.Entity.Product_Entity;
 using QuanLyKhoBackEnd.Model.Entity.Vendor_Entity;
-using QuanLyKhoBackEnd.Model.Entity.Vendor_EntiTy;
 using QuanLyKhoBackEnd.Model.Entity.Warehouse_Entity;
 using QuanLyKhoBackEnd.Model.Form;
 using QuanLyKhoBackEnd.Model.Receipt;

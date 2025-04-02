@@ -1,7 +1,7 @@
 ﻿using System.Net.Mail;
 using System.Net;
 using Microsoft.Extensions.Configuration;
-using StoreQuanLyKhoBackEnd.Middleware.Config;
+using QuanLyKhoBackEnd.Middleware.Config;
 using Microsoft.Extensions.Options;
 
 namespace QuanLyKhoBackEnd.Middleware {

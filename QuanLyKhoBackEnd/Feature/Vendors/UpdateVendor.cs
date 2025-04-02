@@ -6,7 +6,7 @@ using System.Security.Claims;
 using QuanLyKhoBackEnd.Data;
 using QuanLyKhoBackEnd.Endpoint;
 using QuanLyKhoBackEnd.Model.Entity.Customer_Entity;
-using QuanLyKhoBackEnd.Model.Entity.Vendor_EntiTy;
+using QuanLyKhoBackEnd.Model.Entity.Vendor_Entity;
 using QuanLyKhoBackEnd.Model.Enum;
 
 namespace QuanLyKhoBackEnd.Feature.Vendors {

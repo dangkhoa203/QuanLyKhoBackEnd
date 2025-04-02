@@ -1,18 +1,19 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using QuanLyKhoBackEnd.Data;
 using QuanLyKhoBackEnd.Endpoint;
+using QuanLyKhoBackEnd.Model.Enum;
 
 namespace QuanLyKhoBackEnd.Feature.CustomerBuyReceipts {
-    public class GetCustomerReceiptForExport:IEndpoint {
+    public class GetCustomerReceiptsForExport : IEndpoint {
         public record receiptDTO(string id, DateTime dateOfOrder);
         public record Response(bool Success, List<receiptDTO> data, string ErrorMessage);
 
         public static void MapEndpoint(IEndpointRouteBuilder app) {
-            app.MapGet("/api/Customer-Receipts/form", Handler).WithTags("Customer Receipts");
+            app.MapGet("/api/Vendor-Receipts/form", Handler).WithTags("Vendor Receipts");
         }
-        [Authorize()]
+        [Authorize(Roles = Permission.Admin + "," + Permission.CustomerReceipt)]
         private static async Task<IResult> Handler(ApplicationDbContext context, ClaimsPrincipal User) {
             try {
                 var ServiceId = await context.Users
@@ -24,13 +25,14 @@ namespace QuanLyKhoBackEnd.Feature.CustomerBuyReceipts {
                 var Receipts = await context.CustomerBuyReceipts
                     .Include(receipt => receipt.StockExportReport)
                     .Where(receipt => receipt.ServiceId == ServiceId)
-                    .Where(receipt => receipt.StockExportReport.Where(form => !form.IsDeleted).Count() == 0)
+                    .Where(receipt=>receipt.StockExportReport.Where(form=>!form.IsDeleted).Count()==0)
                     .OrderByDescending(receipt => receipt.CreatedDate)
                     .Select(receipt => new receiptDTO(
                         receipt.Id,
                         receipt.DateOrder
                     ))
                     .ToListAsync();
+
                 return Results.Ok(new Response(true, Receipts, ""));
             }
             catch (Exception ex) {

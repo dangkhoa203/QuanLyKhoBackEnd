@@ -4,7 +4,7 @@ using QuanLyKhoBackEnd.Model.Entity.Generic;
 using QuanLyKhoBackEnd.Model.Entity.Warehouse_Entity;
 using QuanLyKhoBackEnd.Model.Form;
 using QuanLyKhoBackEnd.Model.Receipt;
-using QuanLyKhoBackEnd.Model.Entity.Vendor_EntiTy;
+using QuanLyKhoBackEnd.Model.Entity.Vendor_Entity;
 
 
 namespace QuanLyKhoBackEnd.Model.Entity.Product_Entity {
