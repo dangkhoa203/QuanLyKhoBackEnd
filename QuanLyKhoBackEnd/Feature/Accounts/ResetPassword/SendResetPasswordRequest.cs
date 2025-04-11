@@ -35,7 +35,7 @@ namespace QuanLyKhoBackEnd.Feature.Accounts.ResetPassword {
 
                 var Token = await userManager.GeneratePasswordResetTokenAsync(User);
                 Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(Token));
-                var ConfirmLink = $"http://localhost:7088/ResetPassword/{WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(User.Id))}/{Token}";
+                var ConfirmLink = $"https://dkwarehouse.vercel.app/ResetMatKhau/{WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(User.Id))}/{Token}";
 
                 bool EmailResponse = await emailSender.SendEmail(request.Email, "Xác nhận reset mật khẩu","Nhấn vào nút này để vào reset mật khẩu tài khoản.",ConfirmLink,"Thay đổi");
                 if (!EmailResponse) {

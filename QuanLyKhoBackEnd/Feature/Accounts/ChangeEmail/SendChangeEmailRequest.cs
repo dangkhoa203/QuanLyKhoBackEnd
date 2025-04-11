@@ -51,7 +51,7 @@ namespace QuanLyKhoBackEnd.Feature.Accounts.Email {
                 Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(Token));
 
                 string WebEmail = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(request.NewEmail));
-                var ConfirmLink = $"http://localhost:7088/ConfirmDoiEmail/{WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(userDetail.Id))}/{WebEmail}/{Token}";
+                var ConfirmLink = $"https://dkwarehouse.vercel.app/ConfirmDoiEmail/{WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(userDetail.Id))}/{WebEmail}/{Token}";
 
                 bool EmailResponse = await emailSender.SendEmail(userDetail.Email, "Xác nhận thay đổi email","Nhấn vào nút này để thay đổi email.",ConfirmLink,"Thay đổi");
                 if (!EmailResponse) {

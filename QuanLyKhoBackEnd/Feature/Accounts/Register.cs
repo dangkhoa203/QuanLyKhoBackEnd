@@ -62,7 +62,7 @@ namespace QuanLyKhoBackEnd.Feature.Accounts {
                 var CreatedUser = await userManager.FindByEmailAsync(request.Email);
                 var Token = await userManager.GenerateEmailConfirmationTokenAsync(CreatedUser);
                 Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(Token));
-                var ConfirmLink = $"http://localhost:7088/ConfirmEmail/{WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(CreatedUser.UserName))}/{Token}";
+                var ConfirmLink = $"https://dkwarehouse.vercel.app/ConfirmEmail/{WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(CreatedUser.UserName))}/{Token}";
                 var body = $"Xác nhận email tại <a href='{ConfirmLink}'>đây</a>";
                 bool EmailResponse = await emailSender.SendEmail(CreatedUser.Email, "Xác nhận Email tài khoản", "Xác nhận tài khoản bạn vừa mới đăng ký!", ConfirmLink, "Xác nhận");
                 if (!EmailResponse) {
